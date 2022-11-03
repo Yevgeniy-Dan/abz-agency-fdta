@@ -1,14 +1,7 @@
 import React from "react";
-import Header from "./Header";
-import Banner from "./Banner";
-
+import Layout from "./pages/Layout";
 const App = () => {
-  return (
-    <div className="container-xxl p-0 d-flex flex-column">
-      <Header />
-      <Banner />
-    </div>
-  );
+  return <Layout />;
 };
 
 export default App;

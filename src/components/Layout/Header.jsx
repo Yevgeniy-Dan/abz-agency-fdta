@@ -1,9 +1,9 @@
 import React from "react";
-import { ReactComponent as AbzSVG } from "../assets/logo.svg";
+import { ReactComponent as AbzSVG } from "../../assets/logo.svg";
 
 const Header = () => {
   return (
-    <header className="d-flex justify-content-between py-3 px-xxl-0 px-3">
+    <header className="d-flex justify-content-between py-3 px-lg-5 px-xxl-0 px-3">
       <div>
         <AbzSVG />
       </div>
