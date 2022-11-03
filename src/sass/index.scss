@@ -1,0 +1,52 @@
+@import "./variables";
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  min-height: 100%;
+}
+
+body {
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 400;
+}
+
+button {
+  margin: auto 3px;
+  width: 100px;
+  height: 34px;
+  border: 0;
+  color: $black;
+  border-radius: 80px;
+  background-color: $primary;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: $brightyellow;
+}
+
+button:disabled {
+  background-color: $gray;
+  color: $white;
+}
+
+.bg-image{
+  background: url("../assets/pexels-alexandr-podvalny-1227513.jpeg") no-repeat scroll 0px 100% / cover transparent;
+}
+
+.mask{
+  background-color: rgba(0,0,0,0.4);
+}
