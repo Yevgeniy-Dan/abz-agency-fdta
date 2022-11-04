@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { onGetUsers } from "../../api/user";
-import GetRequestCard from "../UI/GetRequestCard";
+import UserCard from "../UI/UserCard";
 
 import { CircularProgress } from "@mui/material";
 
-const GetRequest = () => {
+const Users = () => {
   const [users, setUsers] = useState([]);
   const [usersData, setUsersData] = useState({});
   const [loading, setLoading] = useState(true);
@@ -55,7 +55,7 @@ const GetRequest = () => {
           {users.map((user) => {
             return (
               <div className="col" key={user.id}>
-                <GetRequestCard user={user} />
+                <UserCard user={user} />
               </div>
             );
           })}
@@ -75,4 +75,4 @@ const GetRequest = () => {
   );
 };
 
-export default GetRequest;
+export default Users;

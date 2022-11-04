@@ -2,7 +2,7 @@ import { Avatar } from "@mui/material";
 import React from "react";
 import { ReactComponent as ImageIncaseSVG } from "../../assets/photo-cover.svg";
 
-const GetRequestCard = ({ user }) => {
+const UserCard = ({ user }) => {
   const { name, email, phone, position, photo } = user;
 
   return (
@@ -28,4 +28,4 @@ const GetRequestCard = ({ user }) => {
   );
 };
 
-export default GetRequestCard;
+export default UserCard;
