@@ -1,11 +1,11 @@
 import React from "react";
-import { ReactComponent as AbzSVG } from "../../assets/logo.svg";
+import { ReactComponent as AbzLogoSVG } from "../../assets/logo.svg";
 
 const Header = () => {
   return (
     <header className="d-flex justify-content-between py-3 px-lg-5 px-xxl-0 px-3">
       <div>
-        <AbzSVG />
+        <AbzLogoSVG />
       </div>
       <div className="d-flex">
         <button type="button">Login</button>

@@ -13,9 +13,11 @@ $yellow: #f4e041;
 $brightyellow: #ffe302;
 $gray: #b4b4b4;
 $black: #000000;
+$red: #d32f2f;
 
 $primary: $yellow;
 $secondary: $blue;
+$danger: $red;
 
 :export{
     secondary: $secondary;

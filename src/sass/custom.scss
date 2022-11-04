@@ -38,12 +38,12 @@
   FORM STYLES
 -----------------------------------------------*/
 
-form {
+.form {
     width: 100%;
     max-width: 450px;
 }
 
-form>* {
+.form>* {
     margin: 20px;
 }
 
@@ -56,6 +56,10 @@ form>* {
     background-color: inherit;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+}
+
+.upload-file-btn.danger{
+    outline: 1px solid $danger;
 }
 
 .upload-file-btn:hover {

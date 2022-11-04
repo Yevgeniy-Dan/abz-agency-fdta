@@ -1,50 +1,48 @@
-import React, { useEffect, useState } from "react";
-import { onGetUsers } from "../../api/user";
-import UserCard from "../UI/UserCard";
+import React, { useContext, useEffect, useState } from "react";
+import UsersContext from "../../store/users-context";
+import UserCard from "../UI/Card/UserCard";
+import AppErrorMessage from "../UI/Error/AppErrorMessage";
 
-import { CircularProgress } from "@mui/material";
+import AppCurcularProgress from "../UI/Progress/AppCurcularProgress";
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
-  const [usersData, setUsersData] = useState({});
+  const ctx = useContext(UsersContext);
+
   const [loading, setLoading] = useState(true);
+
+  const [usersError, setUsersError] = useState(false);
 
   const [hidden, setHidden] = useState(false);
 
-  const fetchUsers = async (page = 1) => {
-    const usersData = await onGetUsers(page);
-
-    return usersData;
-  };
-
   useEffect(() => {
-    fetchUsers().then((data) => {
+    const fetchUsers = async () => {
+      const data = await ctx.onGetUsers();
       if (data.success) {
-        setUsersData(data);
-        setUsers(data.users);
-
+        ctx.assignUsersValue(data.usersData.users, data.usersData);
         setLoading(false);
+      } else {
+        setUsersError(data.message);
       }
-    });
+    };
+
+    fetchUsers();
   }, []);
 
-  const handleShowMore = () => {
+  const handleShowMore = async () => {
     setLoading(true);
 
-    const nextPage = usersData.page + 1;
+    const nextPage = ctx.usersData.page + 1;
+    const data = await ctx.onGetUsers(nextPage);
 
-    fetchUsers(nextPage).then((data) => {
-      if (data.success) {
-        setUsersData(data);
-        setUsers((prevState) => {
-          return [...prevState, ...data.users];
-        });
+    if (data.success) {
+      ctx.assignUsersValue(data.usersData.users, data.usersData);
 
-        setLoading(false);
+      setLoading(false);
 
-        setHidden(data.total_pages === nextPage);
-      }
-    });
+      setHidden(data.usersData.total_pages === nextPage);
+    } else {
+      setUsersError(data.message);
+    }
   };
 
   return (
@@ -52,7 +50,7 @@ const Users = () => {
       <h1 className="text-center m-3 mb-5">Working with GET request</h1>
       <div className="p-4">
         <div className="row row-cols row-cols-md-2 row-cols-lg-3 g-3 g-lg-4 ">
-          {users.map((user) => {
+          {ctx.users.map((user) => {
             return (
               <div className="col" key={user.id}>
                 <UserCard user={user} />
@@ -61,11 +59,8 @@ const Users = () => {
           })}
         </div>
       </div>
-      {loading && (
-        <div className="d-flex justify-content-center mb-5">
-          <CircularProgress />
-        </div>
-      )}
+      <AppErrorMessage error={usersError} />
+      <AppCurcularProgress loading={loading} />
       <div className="d-flex justify-content-center">
         <button hidden={hidden} className="mt-3" onClick={handleShowMore}>
           Show More

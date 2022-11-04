@@ -1,6 +1,6 @@
 import { Avatar } from "@mui/material";
 import React from "react";
-import { ReactComponent as ImageIncaseSVG } from "../../assets/photo-cover.svg";
+import { ReactComponent as ImageIncaseSVG } from "../../../assets/photo-cover.svg";
 
 const UserCard = ({ user }) => {
   const { name, email, phone, position, photo } = user;

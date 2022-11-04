@@ -1,10 +1,10 @@
 import { createTheme } from "@mui/material";
-import variables from "../../sass/_variables.scss";
+import variables from "../sass/_variables.scss";
 
 const theme = createTheme({
   typography: {
     fontFamily: ["Nunito", "sans-serif"].join(","),
-    fontSize: "16px",
+    // fontSize: "16px",
   },
   components: {
     MuiTextField: {
