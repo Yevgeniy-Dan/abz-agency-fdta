@@ -1,20 +1,27 @@
+import { Avatar } from "@mui/material";
 import React from "react";
 import { ReactComponent as ImageIncaseSVG } from "../../assets/photo-cover.svg";
 
-const GetRequestCard = () => {
+const GetRequestCard = ({ user }) => {
+  const { name, email, phone, position, photo } = user;
+
   return (
     <div className="card text-center p-3">
       <div className="card-body">
-        <div>
-          <ImageIncaseSVG />
+        <div className="d-flex justify-content-center m-0">
+          {!photo ? (
+            <ImageIncaseSVG />
+          ) : (
+            <Avatar src={photo} alt={name} style={{ margin: 0 }} />
+          )}
         </div>
-        <p>Takamaru Ayako Jurrien</p>
+        <p>{name}</p>
         <p>
-          Lead Independent Director
+          {position}
           <br />
-          Takamuru@gmail.com
+          {email}
           <br />
-          +38 (098) 278 90 24
+          {phone}
         </p>
       </div>
     </div>

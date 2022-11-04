@@ -16,3 +16,7 @@ $black: #000000;
 
 $primary: $yellow;
 $secondary: $blue;
+
+:export{
+    secondary: $secondary;
+}

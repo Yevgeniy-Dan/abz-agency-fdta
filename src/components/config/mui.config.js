@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import variables from "../../sass/_variables.scss";
 
 const theme = createTheme({
   typography: {
@@ -10,6 +11,21 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           margin: "20px",
+        },
+      },
+    },
+    MuiCircularProgress: {
+      styleOverrides: {
+        root: {
+          color: variables.secondary,
+        },
+      },
+    },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          width: "70px",
+          height: "70px",
         },
       },
     },
