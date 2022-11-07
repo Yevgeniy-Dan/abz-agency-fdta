@@ -34,6 +34,10 @@
     overflow: hidden;
 }
 
+.card-body p .app-tooltip{
+    cursor: pointer;
+}
+
 /*----------------------------------------------
   FORM STYLES
 -----------------------------------------------*/
@@ -59,7 +63,9 @@
 }
 
 .upload-file-btn.danger{
-    outline: 1px solid $danger;
+    box-shadow: -1px 0 $danger inset;
+    // outline: 1px solid $danger;
+    border: 0
 }
 
 .upload-file-btn:hover {

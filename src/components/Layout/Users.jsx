@@ -47,7 +47,7 @@ const Users = () => {
 
   return (
     <div className="mt-6">
-      <h1 className="text-center m-3 mb-5">Working with GET request</h1>
+      <h1 className="text-center">Working with GET request</h1>
       <div className="p-4">
         <div className="row row-cols row-cols-md-2 row-cols-lg-3 g-3 g-lg-4 ">
           {ctx.users.map((user) => {

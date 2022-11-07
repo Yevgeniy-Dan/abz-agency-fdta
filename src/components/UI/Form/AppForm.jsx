@@ -11,13 +11,15 @@ const AppForm = ({
     <Formik
       initialValues={initialValues}
       onSubmit={async (values, actions) => {
-        const submitRes = await onSubmit(values);
-        console.log(submitRes);
-        actions.resetForm({
-          values: {
-            ...initialValues,
-          },
-        });
+        const response = await onSubmit(values);
+
+        if (response.success) {
+          actions.resetForm({
+            values: {
+              ...initialValues,
+            },
+          });
+        }
       }}
       validationSchema={validationSchema}
     >

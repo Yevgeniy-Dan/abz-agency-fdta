@@ -1,23 +1,18 @@
 import { TextField } from "@mui/material";
 import { useFormikContext } from "formik";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
 const AppFormInputFile = ({ name }) => {
-  const {
-    values,
-    handleChange,
-    touched,
-    setFieldValue,
-    errors,
-    setFieldTouched,
-  } = useFormikContext();
+  const { values, touched, setFieldValue, errors } = useFormikContext();
   const inputFileRef = useRef(null);
+
+  const errorState = Boolean(touched[name] && errors[name]);
 
   return (
     <TextField
       placeholder="Upload your photo"
       value={values[name]?.name || ""}
-      error={Boolean(touched[name] && errors[name])}
+      error={errorState}
       inputProps={{ readOnly: true }}
       helperText={touched[name] && errors[name]}
       InputProps={{
@@ -27,7 +22,7 @@ const AppFormInputFile = ({ name }) => {
               onClick={() => {
                 inputFileRef.current.click();
               }}
-              className="upload-file-btn"
+              className={"upload-file-btn " + (errorState ? "danger" : "")}
             >
               Upload
             </button>

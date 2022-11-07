@@ -10,6 +10,7 @@ import AppCurcularProgress from "../UI/Progress/AppCurcularProgress";
 import AppErrorMessage from "../UI/Error/AppErrorMessage";
 import AuthService from "../../services/AuthService";
 import UsersContext from "../../store/users-context";
+import { ReactComponent as SuccessImageSVG } from "../../assets/success-image.svg";
 
 const getErrorMessages = (message) => {
   const messagesArr = Object.values(message);
@@ -50,6 +51,7 @@ const validationSchema = Yup.object().shape({
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState(null);
 
   const ctx = useContext(UsersContext);
@@ -63,6 +65,11 @@ const SignUp = () => {
       const data = await ctx.onGetUsers();
 
       ctx.assignUsersValue(data.usersData.users, data.usersData, false);
+
+      setSuccess(true);
+      return {
+        success: true,
+      };
     } catch (error) {
       switch (error.response.status) {
         case 401:
@@ -85,29 +92,34 @@ const SignUp = () => {
 
   return (
     <div className="my-6">
-      <h1 className="text-center m-3">Working with POST request</h1>
-
+      <h1 className="text-center">
+        {success ? "Working with POST request" : "User successfully registered"}
+      </h1>
       <div className="d-flex justify-content-center">
         <AppForm
           validationSchema={validationSchema}
           initialValues={initialValues}
           onSubmit={signUpHandle}
         >
-          <div className="d-flex justify-content-center flex-column form">
-            <AppFormTextField name="name" label="Your Name" />
-            <AppFormTextField name="email" label="Email" />
-            <AppFormTextField name="phone" label="Phone" />
+          {!success ? (
+            <div className="d-flex justify-content-center flex-column form">
+              <AppFormTextField name="name" label="Your Name" />
+              <AppFormTextField name="email" label="Email" />
+              <AppFormTextField name="phone" label="Phone" />
 
-            <AppFormRadioGroup value={initialValues.position} />
-            <AppFormInputFile name="photo" value={initialValues.photo} />
+              <AppFormRadioGroup value={initialValues.position} />
+              <AppFormInputFile name="photo" value={initialValues.photo} />
 
-            <AppErrorMessage error={serverError} />
+              <AppErrorMessage error={serverError} />
 
-            <AppCurcularProgress loading={loading} />
-            <div className="d-flex justify-content-center">
-              <SubmitButton name="Sign Up" />
+              <AppCurcularProgress loading={loading} />
+              <div className="d-flex justify-content-center">
+                <SubmitButton name="Sign Up" />
+              </div>
             </div>
-          </div>
+          ) : (
+            <SuccessImageSVG />
+          )}
         </AppForm>
       </div>
     </div>

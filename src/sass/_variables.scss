@@ -13,6 +13,7 @@ $yellow: #f4e041;
 $brightyellow: #ffe302;
 $gray: #b4b4b4;
 $black: #000000;
+$black-87: rgba($black, 0.87);
 $red: #d32f2f;
 
 $primary: $yellow;
@@ -20,5 +21,7 @@ $secondary: $blue;
 $danger: $red;
 
 :export{
+    textColor: $gray;
+    black-87: $black-87;
     secondary: $secondary;
 }

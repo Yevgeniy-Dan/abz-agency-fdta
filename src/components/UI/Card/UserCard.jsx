@@ -1,4 +1,4 @@
-import { Avatar } from "@mui/material";
+import { Avatar, Tooltip } from "@mui/material";
 import React from "react";
 import { ReactComponent as ImageIncaseSVG } from "../../../assets/photo-cover.svg";
 
@@ -19,7 +19,9 @@ const UserCard = ({ user }) => {
         <p>
           {position}
           <br />
-          {email}
+          <Tooltip title={email} placement="bottom-start">
+            <span className="app-tooltip">{email}</span>
+          </Tooltip>
           <br />
           {phone}
         </p>

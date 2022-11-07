@@ -11,6 +11,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           margin: "20px",
+          borderWidth: "1px",
         },
       },
     },
@@ -18,6 +19,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: variables.secondary,
+        },
+      },
+    },
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          backgroundColor: variables["black-87"],
         },
       },
     },
