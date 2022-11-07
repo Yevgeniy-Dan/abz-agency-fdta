@@ -1,7 +1,7 @@
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { useFormikContext } from "formik";
 import React, { useEffect, useState } from "react";
-import { onPositionsGet } from "../../../api/user";
+import UserService from "../../../services/UserService";
 
 const AppFormRadioGroup = () => {
   const [positions, setPositions] = useState([]);
@@ -9,7 +9,7 @@ const AppFormRadioGroup = () => {
 
   useEffect(() => {
     const fetchPositions = async () => {
-      const positionsData = await onPositionsGet();
+      const positionsData = await UserService.getPositions();
 
       return positionsData;
     };

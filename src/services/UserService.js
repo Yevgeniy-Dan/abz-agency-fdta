@@ -27,4 +27,18 @@ export default class UserService {
       };
     }
   }
+
+  static async getPositions() {
+    const fetchPositions = async () => {
+      return await api.get("/positions");
+    };
+
+    try {
+      const response = await fetchPositions();
+
+      return response.data;
+    } catch (error) {
+      return {};
+    }
+  }
 }
